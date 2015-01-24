@@ -29,6 +29,7 @@ package
     public function spawn():void
     {
       super.reset(FlxG.random() * FlxG.width, -32);
+      acceleration.x = 0;
 
       if (FlxG.random() * 1 >= 0.5) facing = FlxObject.RIGHT;
       else facing = FlxObject.LEFT;

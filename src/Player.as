@@ -50,7 +50,7 @@ package
         maxVelocity.x = 2000;
         acceleration.x = 2000;
 
-        if (facing == FlxObject.LEFT) 
+        if (facing == FlxObject.LEFT)
           acceleration.x = acceleration.x * -1;
 
         play("attack");
@@ -67,6 +67,9 @@ package
       }
 
       if (isTouching(FlxObject.DOWN)) {
+        if (acceleration.x == 0)
+          acceleration.x = 500;
+
         jumpMax = 0;
       }
 

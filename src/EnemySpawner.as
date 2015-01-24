@@ -4,8 +4,8 @@ package
 
   public class EnemySpawner extends FlxGroup
   {
-    public const DELAY:Number = 0.5;
-    public const COUNT:Number = 50;
+    public const DELAY:Number = 1;
+    public const COUNT:Number = 10;
     public var timer:Number = 0;
 
     public function EnemySpawner(gibs:FlxEmitter)
