@@ -4,6 +4,8 @@ package
 
   public class PlayState extends FlxState
   {
+    [Embed(source="background.png")]
+    public var ImgBackground:Class;
     public var player:Player;
     public var spawn:EnemySpawner;
     public var platforms:Platforms;
@@ -18,6 +20,8 @@ package
 
     override public function create():void
     {
+      add(new FlxSprite(0,0,ImgBackground));
+
       gibs = new Gibs();
       add(gibs);
 
