@@ -4,7 +4,7 @@ package
 
   public class Player extends FlxSprite
   {
-    [Embed(source="AmorBoy.png")]
+    [Embed(source="AmorBoyWithFire.png")]
     public var ImgPlayer:Class;
     public var jumpMax:Number = 0;
     public var attackMax:Number = 0;
@@ -46,9 +46,12 @@ package
         play("jump");
       }
 
-      if (FlxG.keys.SPACE) {
+      if (FlxG.keys.SPACE && jumpMax < 0.50) {
         maxVelocity.x = 300;
         acceleration.x = 2000;
+
+        jumpMax += FlxG.elapsed * 2;
+        acceleration.y = -200;
 
         if (facing == FlxObject.LEFT)
           acceleration.x = acceleration.x * -1;
@@ -80,9 +83,9 @@ package
     override public function kill():void {
       emitter.at(this);
       emitter.start(true,3,0,20);
-      super.kill();
       FlxG.shake();
       FlxG.flash(0xffffffff,1.5,FlxG.resetState);
+      super.kill();
     }
   }
 }
