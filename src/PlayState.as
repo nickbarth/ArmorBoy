@@ -4,13 +4,10 @@ package
 
   public class PlayState extends FlxState
   {
-    [Embed(source="AmorBoy.png")]
-    public var ImgPlayer:Class;
-
     [Embed(source="ground.png")]
     public var ImgGround:Class;
 
-    public var player:FlxSprite;
+    public var player:Player;
     public var platforms:FlxGroup = new FlxGroup();
     public var text:FlxText = new FlxText(0, 0, 80, "");
 
@@ -21,16 +18,7 @@ package
 
     override public function create():void
     {
-      player = new FlxSprite(100, 100);
-      player.loadGraphic(ImgPlayer, true, true, 16, 16, true);
-      player.addAnimation("walk", [0, 1, 2, 3], 10, true);
-      player.addAnimation("attack", [4, 5], 10, false);
-      player.addAnimation("jump", [8, 9], 10, false);
-      player.addAnimation("fall", [9], 10, false);
-      player.play("walk");
-      player.maxVelocity.x = 100;
-      player.maxVelocity.y = 100;
-      player.acceleration.y = 1200;
+      player = new Player(100, 100);
       add(player);
 
       var text:FlxText = new FlxText(0, 0, 80, "Armor Boy");
@@ -53,38 +41,7 @@ package
 
     override public function update():void
     {
-      if (FlxG.keys.LEFT) {
-        player.acceleration.x = -500;
-        player.facing = FlxObject.LEFT;
-      }
-
-      if (FlxG.keys.RIGHT) {
-        player.acceleration.x = 500;
-        player.facing = FlxObject.RIGHT;
-      }
-
-      if (FlxG.keys.UP) {
-        player.acceleration.y = -500;
-        player.play("jump");
-      }
-
-      if (FlxG.keys.SPACE) {
-        player.maxVelocity.x = 0;
-        player.play("attack");
-      }
-
-      if (player.finished && player.acceleration.y > 0) {
-        player.maxVelocity.x = 100;
-        player.play("walk");
-      }
-
-      if (player.finished && player.acceleration.y < 0) {
-        player.acceleration.y = 1200;
-        player.play("fall");
-      }
-
       FlxG.collide(player, platforms);
-
       super.update();
     }
   }
