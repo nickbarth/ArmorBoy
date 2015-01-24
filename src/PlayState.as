@@ -52,8 +52,6 @@ package
       } else {
         e.play('attack');
         p.kill();
-        FlxG.shake();
-        FlxG.flash(0xffffffff,1.5,FlxG.resetState);
       }
     }
   }

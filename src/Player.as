@@ -70,6 +70,7 @@ package
         jumpMax = 0;
       }
 
+      if (y > 220) kill();
       super.update();
     }
 
@@ -77,6 +78,8 @@ package
       emitter.at(this);
       emitter.start(true,3,0,20);
       super.kill();
+      FlxG.shake();
+      FlxG.flash(0xffffffff,1.5,FlxG.resetState);
     }
   }
 }

@@ -49,6 +49,7 @@ package
         else acceleration.x = -500;
       }
 
+      if (y > 220) kill();
       super.update();
     }
   }
