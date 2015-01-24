@@ -4,12 +4,9 @@ package
 
   public class PlayState extends FlxState
   {
-    [Embed(source="ground.png")]
-    public var ImgGround:Class;
-
     public var player:Player;
-    public var platforms:FlxGroup = new FlxGroup();
-    public var text:FlxText = new FlxText(0, 0, 80, "");
+    public var platforms:Platforms;
+    public var text:FlxText;
 
     public function PlayState()
     {
@@ -18,24 +15,13 @@ package
 
     override public function create():void
     {
-      player = new Player(100, 100);
-      add(player);
-
       var text:FlxText = new FlxText(0, 0, 80, "Armor Boy");
       add(text);
 
-      var groundMid:FlxTileblock = new FlxTileblock(64, 192, 192, 16);
-      groundMid.loadTiles(ImgGround, 16, 16, 0);
-      platforms.add(groundMid);
+      player = new Player(100, 100);
+      add(player);
 
-      var groundLeft:FlxTileblock = new FlxTileblock(16, 144, 64, 16);
-      groundLeft.loadTiles(ImgGround, 16, 16, 0);
-      platforms.add(groundLeft);
-
-      var groundRight:FlxTileblock = new FlxTileblock(240, 144, 64, 16);
-      groundRight.loadTiles(ImgGround, 16, 16, 0);
-      platforms.add(groundRight);
-
+      platforms = new Platforms();
       add(platforms);
     }
 
