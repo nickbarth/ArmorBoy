@@ -34,9 +34,17 @@ package
       var text:FlxText = new FlxText(0, 0, 80, "Armor Boy");
       add(text);
 
-      var ground:FlxTileblock = new FlxTileblock(64, 192, 192, 16);
-      ground.loadTiles(ImgGround, 16, 16, 0);
-      platforms.add(ground);
+      var groundMid:FlxTileblock = new FlxTileblock(64, 192, 192, 16);
+      groundMid.loadTiles(ImgGround, 16, 16, 0);
+      platforms.add(groundMid);
+
+      var groundLeft:FlxTileblock = new FlxTileblock(16, 144, 64, 16);
+      groundLeft.loadTiles(ImgGround, 16, 16, 0);
+      platforms.add(groundLeft);
+
+      var groundRight:FlxTileblock = new FlxTileblock(240, 144, 64, 16);
+      groundRight.loadTiles(ImgGround, 16, 16, 0);
+      platforms.add(groundRight);
 
       add(platforms);
     }
