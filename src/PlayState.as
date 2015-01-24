@@ -12,7 +12,6 @@ package
     public var gibs:Gibs;
     public var text:FlxText;
 
-
     public function PlayState()
     {
       super();
@@ -20,7 +19,7 @@ package
 
     override public function create():void
     {
-      add(new FlxSprite(0,0,ImgBackground));
+      add(new FlxSprite(0, 0, ImgBackground));
 
       gibs = new Gibs();
       add(gibs);
