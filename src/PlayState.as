@@ -25,6 +25,8 @@ package
       player.loadGraphic(ImgPlayer, true, true, 16, 16, true);
       player.addAnimation("walk", [0, 1, 2, 3], 10, true);
       player.addAnimation("attack", [4, 5], 10, false);
+      player.addAnimation("jump", [8, 9], 10, false);
+      player.addAnimation("fall", [9], 10, false);
       player.play("walk");
       player.maxVelocity.x = 100;
       player.maxVelocity.y = 100;
@@ -62,19 +64,23 @@ package
       }
 
       if (FlxG.keys.UP) {
-        player.acceleration.y = 500;
-        player.facing = FlxObject.RIGHT;
+        player.acceleration.y = -500;
+        player.play("jump");
       }
 
       if (FlxG.keys.SPACE) {
         player.maxVelocity.x = 0;
-        player.maxVelocity.x = 0;
         player.play("attack");
       }
 
-      if (player.finished) {
+      if (player.finished && player.acceleration.y > 0) {
         player.maxVelocity.x = 100;
         player.play("walk");
+      }
+
+      if (player.finished && player.acceleration.y < 0) {
+        player.acceleration.y = 1200;
+        player.play("fall");
       }
 
       FlxG.collide(player, platforms);
