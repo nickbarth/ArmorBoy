@@ -7,7 +7,9 @@ package
     public var player:Player;
     public var spawn:EnemySpawner;
     public var platforms:Platforms;
+    public var gibs:Gibs;
     public var text:FlxText;
+
 
     public function PlayState()
     {
@@ -16,13 +18,16 @@ package
 
     override public function create():void
     {
+      gibs = new Gibs();
+      add(gibs);
+
       var text:FlxText = new FlxText(0, 0, 80, "Armor Boy");
       add(text);
 
-      player = new Player(100, 100);
+      player = new Player(100, 100, gibs);
       add(player);
 
-      spawn = new EnemySpawner();
+      spawn = new EnemySpawner(gibs);
       add(spawn);
 
       platforms = new Platforms();
@@ -31,6 +36,7 @@ package
 
     override public function update():void
     {
+      FlxG.collide(gibs, platforms);
       FlxG.collide(player, platforms);
       FlxG.collide(spawn, platforms);
       FlxG.collide(player, spawn, attacked);

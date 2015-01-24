@@ -8,12 +8,12 @@ package
     public const COUNT:Number = 50;
     public var timer:Number = 0;
 
-    public function EnemySpawner()
+    public function EnemySpawner(gibs:FlxEmitter)
     {
       super();
 
       for (var i:int = 0; i < COUNT; i++) 
-        add(new Enemy(0, 0));
+        add(new Enemy(-1000, 0, gibs));
       callAll('kill');
     }
 
