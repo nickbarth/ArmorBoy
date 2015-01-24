@@ -47,7 +47,7 @@ package
       }
 
       if (FlxG.keys.SPACE) {
-        maxVelocity.x = 2000;
+        maxVelocity.x = 300;
         acceleration.x = 2000;
 
         if (facing == FlxObject.LEFT)
