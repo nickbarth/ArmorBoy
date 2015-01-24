@@ -11,7 +11,7 @@ package
     public var ImgGround:Class;
 
     public var player:FlxSprite;
-    public var ground:FlxTileblock;
+    public var platforms:FlxGroup = new FlxGroup();
     public var text:FlxText = new FlxText(0, 0, 80, "");
 
     public function PlayState()
@@ -27,15 +27,18 @@ package
       player.addAnimation("attack", [4, 5], 10, false);
       player.play("walk");
       player.maxVelocity.x = 100;
-      player.maxVelocity.x = 100;
+      player.maxVelocity.y = 100;
+      player.acceleration.y = 1200;
       add(player);
 
       var text:FlxText = new FlxText(0, 0, 80, "Armor Boy");
       add(text);
 
-      ground = new FlxTileblock(64, 192, 192, 16);
+      var ground:FlxTileblock = new FlxTileblock(64, 192, 192, 16);
       ground.loadTiles(ImgGround, 16, 16, 0);
-      add(ground);
+      platforms.add(ground);
+
+      add(platforms);
     }
 
     override public function update():void
@@ -65,6 +68,8 @@ package
         player.maxVelocity.x = 100;
         player.play("walk");
       }
+
+      FlxG.collide(player, platforms);
 
       super.update();
     }
