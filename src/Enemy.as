@@ -6,7 +6,6 @@ package
   {
     [Embed(source="OrgeBoy.png")]
     public var ImgEnemy:Class;
-    public var jumpMax:Number = 0;
 
     public function Enemy(x:Number, y:Number)
     {
@@ -16,14 +15,21 @@ package
       addAnimation("attack", [4, 5], 10, false);
       addAnimation("jump", [8, 9], 10, false);
       addAnimation("fall", [9], 10, false);
-      play("walk");
+
       maxVelocity.x = 100;
       maxVelocity.y = 100;
       acceleration.y = 1200;
     }
 
+    public function spawn():void
+    {
+      super.reset(FlxG.random() * FlxG.width, -32);
+      play("walk");
+    }
+
     override public function update():void
     {
+      super.update();
     }
   }
 }
