@@ -7,6 +7,7 @@ package
     [Embed(source="AmorBoy.png")]
     public var ImgPlayer:Class;
     public var jumpMax:Number = 0;
+    public var attackMax:Number = 0;
     public var emitter:FlxEmitter;
 
     public function Player(x:Number, y:Number, gibs:FlxEmitter)
@@ -46,7 +47,12 @@ package
       }
 
       if (FlxG.keys.SPACE) {
-        maxVelocity.x = 0;
+        maxVelocity.x = 2000;
+        acceleration.x = 2000;
+
+        if (facing == FlxObject.LEFT) 
+          acceleration.x = acceleration.x * -1;
+
         play("attack");
       }
 
