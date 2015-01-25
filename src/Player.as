@@ -24,6 +24,7 @@ package
       maxVelocity.y = 100;
       acceleration.y = 1200;
       emitter = gibs;
+      jumpMax = 1;
 
       play("walk");
     }
@@ -40,21 +41,32 @@ package
         facing = FlxObject.RIGHT;
       }
 
-      if (FlxG.keys.UP && jumpMax < 0.50) {
-        jumpMax += FlxG.elapsed;
-        acceleration.y = -500;
+      if (FlxG.keys.UP && jumpMax == 0) {
+        jumpMax = 1;
+        maxVelocity.y = 2000;
+        maxVelocity.x = 50;
+        acceleration.y = -2000;
         play("jump");
       }
 
-      if (FlxG.keys.SPACE && jumpMax < 0.50) {
-        maxVelocity.x = 300;
+      if (attackMax != 0)
+        attackMax += FlxG.elapsed;
+
+      if (attackMax > 1.5)
+        attackMax = 0;
+
+      if (FlxG.keys.SPACE && attackMax == 0) {
+        velocity.x = 200;
+        maxVelocity.x = 900;
+        maxVelocity.y = 900;
+        acceleration.y = 2000;
         acceleration.x = 2000;
+        attackMax = 1;
 
-        jumpMax += FlxG.elapsed * 2;
-        acceleration.y = -200;
-
-        if (facing == FlxObject.LEFT)
+        if (facing == FlxObject.LEFT) {
           acceleration.x = acceleration.x * -1;
+          velocity.x = velocity.x * -1;
+        }
 
         play("attack");
       }
@@ -65,6 +77,7 @@ package
       }
 
       if (finished && acceleration.y < 0) {
+        jumpMax = 1;
         acceleration.y = 1200;
         play("fall");
       }
