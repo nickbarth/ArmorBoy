@@ -12,6 +12,10 @@ package
     public var gibs:Gibs;
     public var coins:Coins;
     public var text:FlxText;
+    public var score:Number;
+    public var scoreText:FlxText;
+    public var top:Number;
+    public var topText:FlxText;
 
     public function PlayState()
     {
@@ -28,7 +32,7 @@ package
       gibs = new Gibs();
       add(gibs);
 
-      var text:FlxText = new FlxText(0, 0, 80, "Armor Boy");
+      var text:FlxText = new FlxText(18, 0, 80, "Armor Boy");
       add(text);
 
       player = new Player(100, 100, gibs);
@@ -39,6 +43,18 @@ package
 
       platforms = new Platforms();
       add(platforms);
+
+      score = 0;
+      scoreText = new FlxText(FlxG.width/2-50, 0, 100);
+      scoreText.alignment = "center";
+      scoreText.text = "0";
+      add(scoreText);
+
+      top = FlxG.score ? FlxG.score : 0;
+      topText = new FlxText(FlxG.width-50, 0, 50);
+      topText.alignment = "center";
+      topText.text = top.toString();
+      add(topText);
     }
 
     override public function update():void
@@ -59,6 +75,7 @@ package
         FlxG.flash(0x55ff0000,0.2);
         e.kill();
       } else {
+        if (score > top) FlxG.score = score;
         e.play('attack');
         p.kill();
       }
@@ -67,7 +84,10 @@ package
     public function collected(p:FlxSprite, c:FlxSprite):void
     {
       if (c.health > 0.5) {
-        FlxG.flash(0x22ffff00, 0.05);
+        FlxG.flash(0x22ffff00, 0.04);
+        score += 10;
+        scoreText.text = score.toString();
+        if (score > top) topText.text = score.toString();
         c.kill();
       }
     }

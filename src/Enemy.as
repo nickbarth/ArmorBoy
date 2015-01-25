@@ -45,7 +45,7 @@ package
       _gibs.start(true, 3, 0, 20);
 
       _coins.at(this);
-      _coins.start(true, 0, 0, Math.round(Math.random() * 3) + 3);
+      _coins.start(true, 0, 0, Math.round(Math.random() * 2) + 2);
 
       super.kill();
     }
