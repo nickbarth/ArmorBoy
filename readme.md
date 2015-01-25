@@ -1,6 +1,8 @@
 # Amor Boy
 
-Just an Amor Powered Boy in a Flash Arcade Game. Because why not?
+Just an Amor Powered Boy in a Flash Game.
+
+![https://cdn.rawgit.com/nickbarth/AmorBoy/master/src/AmorBoy.swf](https://cdn.rawgit.com/nickbarth/AmorBoy/master/screenshot.png)
 
 ### License
 
