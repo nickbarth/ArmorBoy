@@ -26,7 +26,7 @@ package
       emitter = gibs;
     }
 
-    public function spawn():void
+    override public function reset(x:Number, y:Number):void
     {
       super.reset(FlxG.random() * FlxG.width, -32);
       acceleration.x = 0;

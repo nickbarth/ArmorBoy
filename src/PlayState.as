@@ -7,7 +7,8 @@ package
     [Embed(source="background.png")]
     public var ImgBackground:Class;
     public var player:Player;
-    public var spawn:EnemySpawner;
+    public var enemySpawn:Spawner;
+    public var coinSpawn:Spawner;
     public var platforms:Platforms;
     public var gibs:Gibs;
     public var text:FlxText;
@@ -30,8 +31,11 @@ package
       player = new Player(100, 100, gibs);
       add(player);
 
-      spawn = new EnemySpawner(gibs);
-      add(spawn);
+      coinSpawn = new Spawner(1, 10, Coin, null);
+      add(coinSpawn);
+
+      enemySpawn = new Spawner(1, 10, Enemy, gibs);
+      add(enemySpawn);
 
       platforms = new Platforms();
       add(platforms);
@@ -41,8 +45,9 @@ package
     {
       FlxG.collide(gibs, platforms);
       FlxG.collide(player, platforms);
-      FlxG.collide(spawn, platforms);
-      FlxG.collide(player, spawn, attacked);
+      FlxG.collide(enemySpawn, platforms);
+      FlxG.collide(coinSpawn, platforms);
+      FlxG.collide(player, enemySpawn, attacked);
       super.update();
     }
 
