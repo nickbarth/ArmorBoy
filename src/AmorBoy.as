@@ -6,8 +6,7 @@ package {
   {
     public function AmorBoy()
     {
-      FlxG.debug=true;
-      super(320, 240, PlayState, 2);
+      super(320, 240, TitleState, 2);
     }
   }
 }

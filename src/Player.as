@@ -95,9 +95,9 @@ package
 
     override public function kill():void {
       emitter.at(this);
-      emitter.start(true,3,0,20);
+      emitter.start(true, 3, 0, 20);
       FlxG.shake();
-      FlxG.flash(0xffffffff,1.5,FlxG.resetState);
+      FlxG.flash(0xffffffff, 1.5, FlxG.resetState);
       super.kill();
     }
   }
