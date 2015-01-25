@@ -1,6 +1,6 @@
 # Amor Boy
 
-![https://cdn.rawgit.com/nickbarth/AmorBoy/master/src/AmorBoy.swf](https://cdn.rawgit.com/nickbarth/AmorBoy/master/screenshot.png)
+![Amor Boy](https://cdn.rawgit.com/nickbarth/AmorBoy/master/screenshot.png)
 
 ### License
 
