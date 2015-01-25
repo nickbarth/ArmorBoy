@@ -8,9 +8,9 @@ package
     public var ImgBackground:Class;
     public var player:Player;
     public var enemySpawn:Spawner;
-    public var coinSpawn:Spawner;
     public var platforms:Platforms;
     public var gibs:Gibs;
+    public var coins:Coins;
     public var text:FlxText;
 
     public function PlayState()
@@ -22,6 +22,9 @@ package
     {
       add(new FlxSprite(0, 0, ImgBackground));
 
+      coins = new Coins();
+      add(coins);
+
       gibs = new Gibs();
       add(gibs);
 
@@ -30,9 +33,6 @@ package
 
       player = new Player(100, 100, gibs);
       add(player);
-
-      coinSpawn = new Spawner(1, 10, Coin, null);
-      add(coinSpawn);
 
       enemySpawn = new Spawner(1, 10, Enemy, gibs);
       add(enemySpawn);
@@ -43,10 +43,10 @@ package
 
     override public function update():void
     {
+      FlxG.collide(coins, platforms);
       FlxG.collide(gibs, platforms);
       FlxG.collide(player, platforms);
       FlxG.collide(enemySpawn, platforms);
-      FlxG.collide(coinSpawn, platforms);
       FlxG.collide(player, enemySpawn, attacked);
       super.update();
     }
