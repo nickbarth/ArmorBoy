@@ -7,9 +7,10 @@ package
     [Embed(source="OrgeBoy.png")]
     public var ImgEnemy:Class;
 
-    private var emitter:FlxEmitter;
+    private var _gibs:FlxEmitter;
+    private var _coins:FlxEmitter;
 
-    public function Enemy(x:Number, y:Number, gibs:FlxEmitter)
+    public function Enemy(x:Number, y:Number, gibs:FlxEmitter, coins:FlxEmitter)
     {
       super(x, y);
 
@@ -23,7 +24,9 @@ package
       maxVelocity.y = 100;
       acceleration.y = 1200;
       acceleration.x = 0;
-      emitter = gibs;
+
+      _gibs = gibs;
+      _coins = coins;
     }
 
     override public function reset(x:Number, y:Number):void
@@ -38,9 +41,12 @@ package
     }
 
     override public function kill():void {
-      emitter.at(this);
-      emitter.start(true,3,0,20);
-      // emitter.start(true,0,0,4);
+      _gibs.at(this);
+      _gibs.start(true, 3, 0, 20);
+
+      _coins.at(this);
+      _coins.start(true, 0, 0, Math.round(Math.random() * 3) + 3);
+
       super.kill();
     }
 

@@ -8,7 +8,7 @@ package
     public var _timer:Number;
     public var _type:Class;
 
-    public function Spawner(delay:Number, count:Number, type:Class, gibs:FlxEmitter)
+    public function Spawner(delay:Number, count:Number, type:Class, gibs:FlxEmitter, coins:FlxEmitter)
     {
       super();
 
@@ -18,7 +18,7 @@ package
 
       for (var n:Number = 0; n < count; n++)
         if (gibs == null) add(new _type(-1000, 0));
-        else add(new _type(-1000, 0, gibs));
+        else add(new _type(-1000, 0, gibs, coins));
 
       callAll('kill');
     }

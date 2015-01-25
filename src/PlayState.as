@@ -34,7 +34,7 @@ package
       player = new Player(100, 100, gibs);
       add(player);
 
-      enemySpawn = new Spawner(1, 10, Enemy, gibs);
+      enemySpawn = new Spawner(1, 10, Enemy, gibs, coins);
       add(enemySpawn);
 
       platforms = new Platforms();
@@ -45,9 +45,10 @@ package
     {
       FlxG.collide(coins, platforms);
       FlxG.collide(gibs, platforms);
-      FlxG.collide(player, platforms);
       FlxG.collide(enemySpawn, platforms);
-      FlxG.collide(player, enemySpawn, attacked);
+      FlxG.overlap(player, enemySpawn, attacked);
+      FlxG.overlap(player, coins, collected);
+      FlxG.collide(player, platforms);
       super.update();
     }
 
@@ -60,6 +61,14 @@ package
       } else {
         e.play('attack');
         p.kill();
+      }
+    }
+
+    public function collected(p:FlxSprite, c:FlxSprite):void
+    {
+      if (c.health > 0.5) {
+        FlxG.flash(0x22ffff00, 0.05);
+        c.kill();
       }
     }
   }
