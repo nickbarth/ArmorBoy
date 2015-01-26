@@ -4,8 +4,10 @@ package
 
   public class Player extends FlxSprite
   {
-    [Embed(source="AmorBoyWithFire.png")]
-    public var ImgPlayer:Class;
+    [Embed(source="Hit.mp3")] public var SndHit:Class;
+    [Embed(source="Jump.mp3")] public var SndJump:Class;
+    [Embed(source="Slash.mp3")] public var SndSlash:Class;
+    [Embed(source="AmorBoyWithFire.png")] public var ImgPlayer:Class;
     public var jumpMax:Number = 0;
     public var attackMax:Number = 0;
     public var emitter:FlxEmitter;
@@ -42,6 +44,7 @@ package
       }
 
       if (FlxG.keys.UP && jumpMax == 0) {
+        FlxG.play(SndJump, 1, false);
         jumpMax = 1;
         maxVelocity.y = 2000;
         maxVelocity.x = 50;
@@ -56,6 +59,7 @@ package
         attackMax = 0;
 
       if (FlxG.keys.SPACE && attackMax == 0) {
+        FlxG.play(SndSlash, 1, false);
         velocity.x = 200;
         maxVelocity.x = 900;
         maxVelocity.y = 900;
@@ -94,6 +98,7 @@ package
     }
 
     override public function kill():void {
+      FlxG.play(SndHit, 1, false);
       emitter.at(this);
       emitter.start(true, 3, 0, 20);
       FlxG.shake();

@@ -4,8 +4,9 @@ package
 
   public class PlayState extends FlxState
   {
-    [Embed(source="background.png")]
-    public var ImgBackground:Class;
+    [Embed(source="Hit.mp3")] public var SndHit:Class;
+    [Embed(source="Coin.mp3")] public var SndCoin:Class;
+    [Embed(source="background.png")] public var ImgBackground:Class;
     public var player:Player;
     public var enemySpawn:Spawner;
     public var platforms:Platforms;
@@ -70,6 +71,7 @@ package
 
     public function attacked(p:FlxSprite, e:FlxSprite):void
     {
+      FlxG.play(SndHit, 1, false);
       if (player.frame == 4 || player.frame == 5) {
         FlxG.shake(0.02, 0.25);
         FlxG.flash(0x55ff0000,0.2);
@@ -84,6 +86,7 @@ package
     public function collected(p:FlxSprite, c:FlxSprite):void
     {
       if (c.health > 0.5) {
+        FlxG.play(SndCoin, 1, false);
         FlxG.flash(0x22ffff00, 0.04);
         score += 10;
         scoreText.text = score.toString();

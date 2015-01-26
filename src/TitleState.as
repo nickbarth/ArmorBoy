@@ -4,8 +4,8 @@ package
 
   public class TitleState extends FlxState
   {
-    [Embed(source="title.png")]
-    public var ImgTitle:Class;
+    [Embed(source="Fight.mp3")] public var Music:Class;
+    [Embed(source="title.png")] public var ImgTitle:Class;
 
     public function TitleState()
     {
@@ -14,6 +14,7 @@ package
 
     override public function create():void
     {
+      FlxG.playMusic(Music);
       add(new FlxSprite(0, 0, ImgTitle));
     }
 
