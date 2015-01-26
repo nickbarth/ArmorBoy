@@ -102,7 +102,7 @@ package
       emitter.at(this);
       emitter.start(true, 3, 0, 20);
       FlxG.shake();
-      FlxG.flash(0xffffffff, 1.5, FlxG.resetState);
+      FlxG.flash(0xffffffff, 1.5, FlxG.resetState, true);
       super.kill();
     }
   }
