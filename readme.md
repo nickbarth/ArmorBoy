@@ -1,6 +1,6 @@
-# Amor Boy
+# Armor Boy
 
-![Amor Boy](https://cdn.rawgit.com/nickbarth/AmorBoy/master/screenshot.png)
+![Armor Boy](https://cdn.rawgit.com/nickbarth/ArmorBoy/master/screenshot.png)
 
 ### License
 

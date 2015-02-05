@@ -7,7 +7,7 @@ package
     [Embed(source="Hit.mp3")] public var SndHit:Class;
     [Embed(source="Jump.mp3")] public var SndJump:Class;
     [Embed(source="Slash.mp3")] public var SndSlash:Class;
-    [Embed(source="AmorBoyWithFire.png")] public var ImgPlayer:Class;
+    [Embed(source="ArmorBoyWithFire.png")] public var ImgPlayer:Class;
     public var jumpMax:Number = 0;
     public var attackMax:Number = 0;
     public var emitter:FlxEmitter;

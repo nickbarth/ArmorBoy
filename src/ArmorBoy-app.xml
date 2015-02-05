@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<application xmlns="http://ns.adobe.com/air/application/3.7" minimumPatchLevel="0">
+    <id>com.nickbarth.ArmorBoy</id>
+    <name>
+        <text xml:lang="en">ArmorBoy</text>
+    </name>
+    <versionNumber>1.0.0</versionNumber>
+    <filename>ArmorBoy</filename>
+    <description>
+      <text xml:lang="en">Just an Armor Powered Boy in a Flash Game for Game Jam 2015.</text>
+    </description>
+    <initialWindow>
+        <content>ArmorBoy.swf</content>
+        <title>ArmorBoy</title>
+        <renderMode>direct</renderMode>
+        <fullscreen>true</fullscreen>
+        <visible>true</visible>
+    </initialWindow>
+</application>
