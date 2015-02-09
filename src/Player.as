@@ -34,12 +34,12 @@ package
     override public function update():void
     {
       if (FlxG.keys.LEFT) {
-        acceleration.x = -500;
+        x -= 2;
         facing = FlxObject.LEFT;
       }
 
       if (FlxG.keys.RIGHT) {
-        acceleration.x = 500;
+        x += 2;
         facing = FlxObject.RIGHT;
       }
 
@@ -77,6 +77,8 @@ package
 
       if (finished && acceleration.y > 0) {
         maxVelocity.x = 100;
+        acceleration.x = 0;
+        velocity.x = 0;
         play("walk");
       }
 
@@ -87,9 +89,6 @@ package
       }
 
       if (isTouching(FlxObject.DOWN)) {
-        if (acceleration.x == 0)
-          acceleration.x = 500;
-
         jumpMax = 0;
       }
 
