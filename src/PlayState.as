@@ -17,6 +17,7 @@ package
     public var scoreText:FlxText;
     public var top:Number;
     public var topText:FlxText;
+    public var muteText:FlxText;
 
     public function PlayState()
     {
@@ -56,10 +57,25 @@ package
       topText.alignment = "center";
       topText.text = top.toString();
       add(topText);
-    }
+
+      muteText = new FlxText(0, FlxG.height - 16, FlxG.width, "(m)ute");
+      muteText.setFormat(null, 8, 0xffffff, "right", 0);
+      add(muteText);
+
+      if (FlxG.mute) muteText.text = "un(m)ute";
+      else muteText.text = "(m)ute";
+/flex/bin/mxmlc -static-link-runtime-shared-libraries ArmorBoy.as && open ArmorBoy.swf
+Loading configuration file /flex/frameworks/flex-config.xml
+/Users/nick/Documents/Games/ArmorBoy/src/ArmorBoy.swf (739699 bytes)
 
     override public function update():void
     {
+      if (FlxG.keys.justPressed("M")) {
+        FlxG.mute = !FlxG.mute;
+        if (FlxG.mute) muteText.text = "un(m)ute";
+        else muteText.text = "(m)ute";
+      }
+
       FlxG.collide(coins, platforms);
       FlxG.collide(gibs, platforms);
       FlxG.collide(enemySpawn, platforms);
